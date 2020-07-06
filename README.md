@@ -1,11 +1,9 @@
 # wordpress-vanilla-docker-compose
 
 
-to have your own wordpress server
+to have your own wordpress server you need to run the following command
 
-
-```python
-s = "Dockerfile syntax highlighting"
+```console
 docker-compose -f "docker-compose.yml" up -d --build
 ```
 
