@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  mycontainer:
+    image: .
+    build: .
+      args:
+        db_host: "127.0.0.1"
+        db_name: "db"
+        db_user: "admin"
+        db_pass: ""
+    volumes:
+      # - './path/on/docker/host:/path/inside/container'  
+      - './.data/wordpress:/var/www/html'
