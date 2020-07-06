@@ -113,7 +113,8 @@ RUN chown -R -f www-data:www-data /var/www/html
 
 
 ## Woocommerce
-
+# https://wordpress.org/plugins/woocommerce/
+# https://wordpress.org/support/article/managing-plugins/#manual-plugin-installation
 #RUN echo "download" 
 #RUN wget https://downloads.wordpress.org/plugin/woocommerce.zip -O /var/www/html/wp-content/plugins/woocommerce.zip
 
