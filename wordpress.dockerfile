@@ -112,6 +112,18 @@ RUN chown -R -f www-data:www-data /var/www/html
 
 
 
+## Woocommerce
+
+#RUN echo "download" 
+#RUN wget https://downloads.wordpress.org/plugin/woocommerce.zip -O /var/www/html/wp-content/plugins/woocommerce.zip
+
+
+# unzip woocommerce.zip
+#RUN unzip /var/www/html/wp-content/plugins/woocommerce.zip
+# delete woocommerce.zip
+#RUN rm -rf /var/www/html/wp-content/plugins/woocommerce.zip
+
+
 # define( ‘DB_HOST’, ‘localhost:3306‘ );
 ARG db_host="localhost"
 ARG db_port="3306"
