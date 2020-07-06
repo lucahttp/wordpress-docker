@@ -169,6 +169,10 @@ RUN sed -i -r "s/'password_here'/'${db_pass}'/g" wp-config.php
 # RUN cat wp-config.php | sed 's/database_name_here/"${DB_NAME}"/g' > wp-config.php
 
 
+
+# https://askubuntu.com/questions/256013/apache-error-could-not-reliably-determine-the-servers-fully-qualified-domain-n
+# RUN echo 'ServerName localhost' > /etc/apache2/apache2.conf
+
 #RUN echo hostname -I
 RUN ls /var/www/html/
 
