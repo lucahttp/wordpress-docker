@@ -1,46 +1,29 @@
-version: '3.1'
-
+version: '2'
 services:
   db:
-    # container_name: database_mysql
-    restart: always
     image: mysql:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: superpass
-      MYSQL_DATABASE: mydb
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin
     volumes:
-      # - my-datavolume:/var/lib/mysql  
-      - './.data/mysql:/var/lib/mysql'
-    ports:
-      - "3306:3306"
-  web:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123654
+      MYSQL_DATABASE: wordpressdb
+      MYSQL_USER: wordpressadmin
+      MYSQL_PASSWORD: 123
+
+  wordpress:
     depends_on:
       - db
+    image: wordpress:latest
+    volumes:
+      - "./.data/wordpress:/var/www/html"
     links:
       - db
-    build:
-      context: ./
-      dockerfile: wordpress.dockerfile
-      args:
-        db_host: db
-        db_port: 3306
-        db_name: mydb
-        db_user: admin
-        db_pass: admin
     ports:
-      - "80:80"
-      - "443:443"
-    #volumes:
-      # - './path/on/docker/host:/path/inside/container'  
-      # - './.data/wordpress:/var/www/html'
-      # - .:/code
-    #environment:
-    #  DB_HOST_ENV: 127.0.0.1
-    #  DB_NAME_ENV: db
-    #  DB_USER_ENV: admin
-    #  DB_PASS_ENV:
-  # redis:
-  #   image: "redis:alpine"
-  # docker-compose up --force-recreate --renew-anon-volumes --build
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpressadmin
+      WORDPRESS_DB_PASSWORD: 123
+      WORDPRESS_DB_NAME: wordpressdb
