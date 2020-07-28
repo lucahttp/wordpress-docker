@@ -16,6 +16,8 @@ services:
     ports:
       - "3306:3306"
   web:
+    #volumes:
+    #   - './.data/wordpress:/var/www/html/'
     depends_on:
       - db
     links:
@@ -32,9 +34,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    #volumes:
       # - './path/on/docker/host:/path/inside/container'  
-      # - './.data/wordpress:/var/www/html'
       # - .:/code
     #environment:
     #  DB_HOST_ENV: 127.0.0.1
@@ -44,3 +44,4 @@ services:
   # redis:
   #   image: "redis:alpine"
   # docker-compose up --force-recreate --renew-anon-volumes --build
+  # docker-compose up -d
