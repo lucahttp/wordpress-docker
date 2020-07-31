@@ -1,6 +1,4 @@
 FROM ubuntu:latest
-
-
 # File Author / Maintainer
 LABEL author="lukaneco"
 LABEL maintainer="luca.sain@outlook.com"
